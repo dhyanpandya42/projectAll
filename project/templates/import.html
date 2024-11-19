@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Import Expenses from CSV</h2>
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Select CSV File</label>
+        <input type="file" class="form-control" id="file" name="file" accept=".csv" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Import</button>
+</form>
+{% endblock %}

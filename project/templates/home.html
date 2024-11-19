@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Expense Manager</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="http://127.0.0.1:5000/welcome" class="hover:underline">Home</a></li>
+                    <li><a href="http://127.0.0.1:5000/login" class="hover:underline">login</a></li>
+                    <li><a href="http://127.0.0.1:5000/signup" class="hover:underline">Signup</a></li>
+                    <li><a href="http://127.0.0.1:5000/expenses" class="hover:underline">Expenses</a></li>
+                    <li><a href="http://127.0.0.1:5000/reports" class="hover:underline">Reports</a></li>
+                    <li><a href="http://127.0.0.1:5000/Settings" class="hover:underline">Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 p-4">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Add New Expense</h2>
+            <!-- <form action="/add" method="POST">
+                <input type="text" name="description" placeholder="Description" required>
+                <input type="number" name="amount" step="0.01" placeholder="Amount" required>
+                <input type="date" name="date" required>
+                <button type="submit">Add Expense</button>
+            </form> -->
+
+
+            <form action="/add" method="POST">
+                <div class="mb-4">
+                    <label for="expense-name" class="block text-gray-700">Expense Name</label>
+                    <input type="text" name="description" id="expense-name" class="w-full p-2 border border-gray-300 rounded mt-1">
+                </div>
+                <div class="mb-4">
+                    <label for="expense-amount" class="block text-gray-700">Amount</label>
+                    <input type="number" name="amount" id="expense-amount" class="w-full p-2 border border-gray-300 rounded mt-1">
+                </div>
+                <div class="mb-4">
+                    <label for="expense-date" class="block text-gray-700">Date</label>
+                    <input type="date" name="date" id="expense-date" class="w-full p-2 border border-gray-300 rounded mt-1">
+                </div>
+                <!-- <div class="mb-4">
+                    <label for="expense-category" class="block text-gray-700">Category</label>
+                    <select id="expense-category" class="w-full p-2 border border-gray-300 rounded mt-1">
+                        <option>Food</option>
+                        <option>Transport</option>
+                        <option>Entertainment</option>
+                        <option>Utilities</option>
+                        <option>Others</option>
+                    </select>
+                </div> -->
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Add Expense</button>
+            </form>
+        </div>
+        <!-- <div>
+            <h2>Expenses</h2>
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.description }}</td>
+                <td>{{ expense.amount }}</td>
+                <td>{{ expense.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div> -->
+    
+        <div class="bg-white p-6 rounded-lg shadow-lg mt-8">
+            <h2 class="text-xl font-bold mb-4">Expense List</h2>
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">Name</th>
+                        <th class="py-2 px-4 border-b">Amount</th>
+                        <th class="py-2 px-4 border-b">Date</th>
+                        <!-- <th class="py-2 px-4 border-b">Category</th> -->
+                        <th class="py-2 px-4 border-b">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ expense.description }}</td>
+                        <td class="py-2 px-4 border-b">{{ expense.amount }}</td>
+                        <td class="py-2 px-4 border-b">{{ expense.date }}</td>
+                        <!-- <td class="py-2 px-4 border-b">Food</td>
+                        <td class="py-2 px-4 border-b">
+                            <button class="text-blue-600 hover:underline">Edit</button>
+                            <button class="text-red-600 hover:underline">Delete</button>
+                        </td> -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div> 
+        
+    </main>
+    
+    <footer class="bg-blue-600 text-white p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Personal Expense Manager. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

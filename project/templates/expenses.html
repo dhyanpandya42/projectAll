@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-6">Personal Expense Manager</h1>
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="mb-4">
+                <label for="csvFile" class="block text-sm font-medium text-gray-700">Upload CSV File</label>
+                <input type="file" id="csvFile" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <button id="uploadButton" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Upload</button>
+        </div>
+        <div class="mt-6">
+            <h2 class="text-2xl font-bold mb-4">Expenses</h2>
+            <table class="min-w-full bg-white shadow-md rounded-lg">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                        <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="expenseTableBody">
+                    <!-- Expense items will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadButton').addEventListener('click', function() {
+            const fileInput = document.getElementById('csvFile');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const text = e.target.result;
+                    const rows = text.split('\n').slice(1); // Skip header row
+                    const tableBody = document.getElementById('expenseTableBody');
+                    tableBody.innerHTML = ''; // Clear existing rows
+                    rows.forEach(row => {
+                        const cols = row.split(',');
+                        if (cols.length === 4) {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td class="py-2 px-4 border-b border-gray-200">${cols[0]}</td>
+                                <td class="py-2 px-4 border-b border-gray-200">${cols[1]}</td>
+                                <td class="py-2 px-4 border-b border-gray-200">${cols[2]}</td>
+                                <td class="py-2 px-4 border-b border-gray-200">${cols[3]}</td>
+                            `;
+                            tableBody.appendChild(tr);
+                        }
+                    });
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Please select a CSV file to upload.');
+            }
+        });
+    </script>
+</body>
+</html>

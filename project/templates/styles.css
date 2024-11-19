@@ -1,0 +1,109 @@
+/* Reset some default browser styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light background for the body */
+    color: #333; /* Dark text color for contrast */
+}
+
+/* Container to center content */
+.container {
+    width: 80%;
+    max-width: 1200px; /* Maximum width for larger screens */
+    margin: auto; /* Center the container */
+    overflow: hidden; /* Clear floats */
+}
+
+/* Header styles */
+header {
+    background: #007bff; /* Bright blue background */
+    color: #fff; /* White text color */
+    padding: 20px 0; /* Padding for spacing */
+    text-align: center; /* Center align text */
+}
+
+header h1 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+header p {
+    font-size: 1.2em; /* Larger font size for the paragraph */
+}
+
+/* Benefits section styles */
+.benefits {
+    background: #ffffff; /* White background for benefits section */
+    padding: 20px; /* Padding for spacing */
+    margin: 20px 0; /* Margin above and below the section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.benefits h2 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.benefits ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.benefits li {
+    margin: 10px 0; /* Space between list items */
+    padding: 10px; /* Padding inside list items */
+    background: #e9ecef; /* Light gray background for list items */
+    border-radius: 5px; /* Rounded corners for list items */
+}
+
+/* Call to Action section styles */
+.cta {
+    text-align: center; /* Center align the text */
+    margin: 20px 0; /* Margin above and below the section */
+}
+
+.cta h2 {
+    margin-bottom: 15px; /* Space below the heading */
+}
+
+.cta button {
+    background: #28a745; /* Green background for the button */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 15px 30px; /* Padding for button */
+    font-size: 1.2em; /* Larger font size for button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s; /* Smooth transition for background change */
+}
+
+.cta button:hover {
+    background: #218838; /* Darker green on hover */
+}
+
+/* Footer styles */
+footer {
+    text-align: center; /* Center align the text */
+    padding: 20px 0; /* Padding for spacing */
+    background: #007bff; /* Bright blue background */
+    color: #fff; /* White text color */
+    position: relative; /* Relative positioning */
+    bottom: 0; /* Align to the bottom */
+    width: 100%; /* Full width */
+}
+
+footer a {
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 10px; /* Margin between links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
