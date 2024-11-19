@@ -52,8 +52,17 @@ def login():
         password = request.form['password']
 
         if username == USERNAME and password == PASSWORD:
+             
             session['user_id'] = username  # Store the username in the session
             flash('Login successful!', 'success')
+            connection = get_db_connection()
+            cursor = connection.cursor()
+            cursor.execute('INSERT INTO users (username, password) VALUES (%s, %s)',
+                   (username, password))
+            connection.commit()
+            cursor.close()
+            connection.close()
+            
             return redirect(home.html('home'))
         else:
             flash('Invalid username or password.', 'danger')
